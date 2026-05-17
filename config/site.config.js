@@ -31,7 +31,7 @@ module.exports = {
   // [OPTIONAL] The footer component of your website. You can write HTML here, but you need to escape double quotes - changing " to \".
   // You can write anything here, and if you like badges, generate some with https://shields.io
   footer:
-  'Powered by <a href="https://github.com/XuexGao/onedrive-index-pro" target="_blank" rel="noopener noreferrer">onedrive-index</a>.',
+  '',
 
   // [OPTIONAL] This is an array of names and links for setting your social information and links.
   // In the latest update, all brand icons inside font awesome is supported and the icon to render is based on the name you provide. See the documentation for details.
