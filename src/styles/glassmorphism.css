@@ -206,3 +206,9 @@ main,
 #umami-footer b {
   color: #409EFF;
 }
+
+/* markdown-body 自带白色背景，强制透明让外层毛玻璃透出来 */
+.markdown-body {
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+}
