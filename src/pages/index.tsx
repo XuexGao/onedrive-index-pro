@@ -17,7 +17,7 @@ export default function Home() {
 
       <main className="od-main flex w-full flex-1 flex-col">
         <Navbar />
-        <div className="mx-auto w-full max-w-5xl py-4 px-3 sm:px-4 sm:p-4">
+        <div className="mx-auto w-full max-w-5xl py-4 px-2 sm:px-4 sm:p-4">
           <nav className="mb-4 flex items-center justify-between px-1">
             <Breadcrumb />
             <SwitchLayout />
