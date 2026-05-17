@@ -61,7 +61,10 @@
   -webkit-text-size-adjust: 100%;
   line-height: 1.5;
   color: #24292e;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 0.75rem;
   font-size: 16px;
   line-height: 1.5;
   word-wrap: break-word;
@@ -766,18 +769,18 @@
 }
 
 .markdown-body table tr {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.25);
   border-top: 1px solid #c6cbd1;
 }
 
 .markdown-body table tr:nth-child(2n) {
-  background-color: #f6f8fa;
+  background-color: rgba(246,248,250,0.3);
 }
 
 .markdown-body img {
   max-width: 100%;
   box-sizing: initial;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 .markdown-body img[align='right'] {
@@ -992,7 +995,10 @@
     /* color: #c9d1d9; */
     /* background-color: #0d1117; */
     color: #f3f4f6;
-    background-color: #18181b;
+    background-color: rgba(15, 15, 25, 0.50);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 0.75rem;
   }
   .markdown-body a {
     color: rgba(2, 132, 199);
@@ -1018,10 +1024,10 @@
     border-bottom: 1px solid #30363d !important;
   }
   .markdown-body .bg-white {
-    background-color: #0d1117 !important;
+    background-color: rgba(13, 17, 23, 0.4) !important;
   }
   .markdown-body .bg-gray-light {
-    background-color: #0d1117 !important;
+    background-color: rgba(13, 17, 23, 0.3) !important;
   }
   .markdown-body .text-gray-light {
     color: #8b949e !important;
@@ -1132,14 +1138,14 @@
     border: 1px solid #3b434b;
   }
   .markdown-body table tr {
-    background-color: #0d1117;
+    background-color: rgba(13, 17, 23, 0.25);
     border-top: 1px solid #272c32;
   }
   .markdown-body table tr:nth-child(2n) {
-    background-color: #161b22;
+    background-color: rgba(22,27,34,0.3);
   }
   .markdown-body img {
-    background-color: #0d1117;
+    background-color: transparent;
   }
   .markdown-body code {
     background-color: rgba(240, 246, 252, 0.15);
