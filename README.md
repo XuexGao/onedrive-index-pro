@@ -1,10 +1,8 @@
-# OneDrive-Index（一键部署Vercel版）
-
-[English](./README.md) | 简体中文
+# OneDrive-Index（雪xie高修改美化版）
 
 本项目fork自[spencerwooo/onedrive-vercel-index](https://github.com/spencerwooo/onedrive-vercel-index)，基于原作者于2023年6月24日归档的版本并进行了一些小修改，让您可以一键部署在完全免费托管的Vercel，在一个网页中展示、分享、预览和下载您的OneDrive文件。具体部署方法请参考下面的说明。
 
-> 本版本只测试通过E5开发者帐户，其他类型的OneDrive帐户有待进一步测试。
+> 本版本只测试通过E5开发者帐户和E3账号，其他类型的OneDrive帐户有待进一步测试。
 
 ## 修改说明
 
@@ -12,9 +10,11 @@
 
 - 再就是本版本设定了当完成OAuth认证后，自动关闭OAuth认证通道，以防有心人通过OAuth认证的网址链接就轻易地获取到用户的配置信息。
 
+- 美化了整体的页面(未完工)，添加了Umami统计
+
 ## 在线预览
 
-本一键部署版的[在线预览](https://odi-demo.freeloop.one) | 原作者提供的[在线预览](https://drive.swo.moe)（已暂停维护）
+本一键部署版的[在线预览](https://e3.xiegao.top) | 原作者提供的[在线预览](https://drive.swo.moe)（已暂停维护）
 
 ![demo](./public/demo.png)
 
@@ -36,17 +36,6 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/clone?repository-url=https%3A%2F%2Fgithub.com%2FXuexGao%2Fonedrive-index-pro&env=NEXT_PUBLIC_SITE_TITLE,USER_PRINCIPAL_NAME,BASE_DIRECTORY,CLIENT_ID,CLIENT_SECRET)
 
-> - 如果你有需要密码保护的目录：
->
-> [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/clone?repository-url=https%3A%2F%2Fgithub.com%2FiRedScarf%2Fonedrive-index&env=NEXT_PUBLIC_SITE_TITLE,USER_PRINCIPAL_NAME,BASE_DIRECTORY,NEXT_PUBLIC_PROTECTED_ROUTES,CLIENT_ID,CLIENT_SECRET) with `NEXT_PUBLIC_PROTECTED_ROUTES`
->
-> - 如果你有多个OneDrive帐户需要使用同一个Redis数据库：
->
-> [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/clone?repository-url=https%3A%2F%2Fgithub.com%2FiRedScarf%2Fonedrive-index&env=NEXT_PUBLIC_SITE_TITLE,USER_PRINCIPAL_NAME,BASE_DIRECTORY,CLIENT_ID,CLIENT_SECRET,KV_PREFIX) with `KV_PREFIX`
->
-> - 如果你需要部署多个OneDrive-Index同时都有需要密码保护的目录：
->
-> [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/clone?repository-url=https%3A%2F%2Fgithub.com%2FiRedScarf%2Fonedrive-index&env=NEXT_PUBLIC_SITE_TITLE,USER_PRINCIPAL_NAME,BASE_DIRECTORY,NEXT_PUBLIC_PROTECTED_ROUTES,CLIENT_ID,CLIENT_SECRET,KV_PREFIX) with `NEXT_PUBLIC_PROTECTED_ROUTES` & `KV_PREFIX`
 
 4. **初次部署成功后，部署的页面上去是404的，因为我们还需要连接到Redis数据库。**
  
@@ -105,6 +94,8 @@
 
 © 2023 [iRedScarf](https://github.com/iRedScarf)
 
+© 2023 [XieGao](https://github.com/XuexGao)
+
 <div align="center">
-    Made by <a href="https://spencerwoo.com">spencer woo</a> | Modified by <a href="https://github.com/iRedScarf">iRedScarf
+    Made by <a href="https://spencerwoo.com">spencer woo</a> | Modified by <a href="https://github.com/XuexGao">iRedScarf
 </div>
