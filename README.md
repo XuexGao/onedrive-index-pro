@@ -1,4 +1,4 @@
-# OneDrive-Index（雪xie高修改美化版）
+# OneDrive-Index（XieGao修改美化版）
 
 本项目fork自[spencerwooo/onedrive-vercel-index](https://github.com/spencerwooo/onedrive-vercel-index)，基于原作者于2023年6月24日归档的版本并进行了一些小修改，让您可以一键部署在完全免费托管的Vercel，在一个网页中展示、分享、预览和下载您的OneDrive文件。具体部署方法请参考下面的说明。
 
@@ -94,8 +94,8 @@
 
 © 2023 [iRedScarf](https://github.com/iRedScarf)
 
-© 2023 [XieGao](https://github.com/XuexGao)
+© 2026 [XieGao](https://github.com/XuexGao)
 
 <div align="center">
-    Made by <a href="https://spencerwoo.com">spencer woo</a> | Modified by <a href="https://github.com/XuexGao">iRedScarf
+    Made by <a href="https://spencerwoo.com">spencer woo</a> | Modified by <a href="https://github.com/XuexGao">XieGao
 </div>
