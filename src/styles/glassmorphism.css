@@ -32,6 +32,7 @@
 }
 
 /* ---------- Transparent page shells ---------- */
+html,
 body,
 #__next,
 #__next > div {
@@ -42,7 +43,13 @@ body,
   background: transparent !important;
 }
 
-.od-main {
+/* Override Tailwind bg classes on the main structural elements */
+main,
+.od-main,
+.od-main.bg-gray-50,
+.od-main.bg-gray-800,
+.od-page-wrapper.bg-white,
+.od-page-wrapper.bg-gray-900 {
   background: transparent !important;
 }
 
