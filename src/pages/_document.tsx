@@ -26,7 +26,7 @@ class MyDocument extends Document {
           <script
             defer
             src="https://u.xiegao.top/script.js"
-            data-website-id="20eb017f-1d2d-46c3-8369-ecbe9b53a87b"
+            data-website-id="657f778c-1788-48a4-afbd-19364c686800"
           />
         </Head>
         <body>
