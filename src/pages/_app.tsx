@@ -126,7 +126,7 @@ library.add(
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      {/* Blurred background wallpaper — sits behind everything */}
+      {/* 随机壁纸背景层，固定在页面最底层 */}
       <div id="bg-wallpaper" aria-hidden="true" />
 
       <NextNProgress height={1} color="rgb(156, 163, 175, 0.9)" options={{ showSpinner: false }} />
