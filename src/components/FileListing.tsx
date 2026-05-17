@@ -348,7 +348,7 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
         {layout.name === 'Grid' ? <FolderGridLayout {...folderProps} /> : <FolderListLayout {...folderProps} />}
 
         {!onlyOnePage && (
-          <div className="rounded-b bg-white dark:bg-gray-900 dark:text-gray-100">
+          <div className="rounded-b dark:text-gray-100" style={{ backgroundColor: "rgba(255,255,255,0.35)", backdropFilter: "blur(14px)" }}>
             <div className="border-b border-gray-200 p-3 text-center font-mono text-sm text-gray-400 dark:border-gray-700">
               {t('- showing {{count}} page(s) ', {
                 count: size,
