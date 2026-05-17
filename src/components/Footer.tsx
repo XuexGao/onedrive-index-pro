@@ -1,12 +1,6 @@
 import { useEffect } from 'react'
 import config from '../../config/site.config'
 
-const createFooterMarkup = () => {
-  return {
-    __html: config.footer,
-  }
-}
-
 // Umami visit counter widget
 const UmamiFooter = () => {
   useEffect(() => {
@@ -66,11 +60,7 @@ const UmamiFooter = () => {
       }
     }
 
-    // Scroll-hide: hides when scrolling down, shows on scroll up
     function initScrollHide() {
-      const footer = document.getElementById('umami-footer')
-      if (!footer) return
-
       let lastScrollY = window.scrollY
       let lastTouchY = 0
       let ticking = false
@@ -111,7 +101,6 @@ const UmamiFooter = () => {
       window.addEventListener('touchmove', onTouchMove, { passive: true })
     }
 
-    // Wait for DOM elements to be ready
     let tries = 0
     const timer = setInterval(() => {
       tries++
@@ -136,12 +125,15 @@ const UmamiFooter = () => {
 }
 
 const Footer = () => {
+  // config.footer 为空时不渲染底栏文字
   return (
     <>
-      <div
-        className="od-footer w-full border-t border-gray-900/10 p-4 text-center text-xs font-medium text-gray-400 dark:border-gray-500/30"
-        dangerouslySetInnerHTML={createFooterMarkup()}
-      />
+      {config.footer ? (
+        <div
+          className="od-footer w-full border-t border-gray-900/10 p-4 text-center text-xs font-medium text-gray-400 dark:border-gray-500/30"
+          dangerouslySetInnerHTML={{ __html: config.footer }}
+        />
+      ) : null}
       <UmamiFooter />
     </>
   )
