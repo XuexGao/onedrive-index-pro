@@ -2,6 +2,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css'
 
 import '../styles/globals.css'
 import '../styles/markdown-github.css'
+import '../styles/glassmorphism.css'
 import { Analytics } from '@vercel/analytics/react';
 
 // Require had to be used to prevent SSR failure in Next.js
@@ -125,6 +126,9 @@ library.add(
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
+      {/* Blurred background wallpaper — sits behind everything */}
+      <div id="bg-wallpaper" aria-hidden="true" />
+
       <NextNProgress height={1} color="rgb(156, 163, 175, 0.9)" options={{ showSpinner: false }} />
       <Analytics />
       <Component {...pageProps} />
