@@ -83,11 +83,11 @@ library.add(
   ...iconList
 )
 
-// Umami 访问统计 —— 放在 _app.tsx 里，整个应用只初始化一次
+// Umami 访问统计
 function UmamiFooter() {
   useEffect(() => {
-    const shareId   = 'gjFl1anVRaUpfLZE'
-    const websiteId = '20eb017f-1d2d-46c3-8369-ecbe9b53a87b'
+    const shareId   = 'mBSRxuKO9HStUBPz'
+    const websiteId = '657f778c-1788-48a4-afbd-19364c686800'
     const baseUrl   = 'https://u.xiegao.top'
 
     function animateValue(el: HTMLElement, end: number) {
