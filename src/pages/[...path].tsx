@@ -14,12 +14,12 @@ export default function Folders() {
   const title = (query.path && Array.isArray(query.path) ? query.path[query.path.length - 1] : '')
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white dark:bg-gray-900">
+    <div className="od-page-wrapper flex min-h-screen flex-col items-center justify-center">
       <Head>
         <title>{title}</title>
       </Head>
 
-      <main className="flex w-full flex-1 flex-col bg-gray-50 dark:bg-gray-800">
+      <main className="od-main flex w-full flex-1 flex-col">
         <Navbar />
         <div className="mx-auto w-full max-w-5xl py-4 sm:p-4">
           <nav className="mb-4 flex items-center justify-between space-x-3 px-4 sm:px-0 sm:pl-1">
