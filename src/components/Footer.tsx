@@ -78,11 +78,13 @@ const UmamiFooter = () => {
       function onScroll() {
         if (!ticking) {
           window.requestAnimationFrame(() => {
+            const el = document.getElementById('umami-footer')
+            if (!el) return
             const current = window.scrollY
             if (current > lastScrollY + 4) {
-              footer.classList.add('hidden')
+              el.classList.add('hidden')
             } else if (current < lastScrollY - 4) {
-              footer.classList.remove('hidden')
+              el.classList.remove('hidden')
             }
             lastScrollY = current
             ticking = false
@@ -96,9 +98,11 @@ const UmamiFooter = () => {
       }
 
       function onTouchMove(e: TouchEvent) {
+        const el = document.getElementById('umami-footer')
+        if (!el) return
         const deltaY = lastTouchY - e.touches[0].clientY
-        if (deltaY > 4) footer.classList.add('hidden')
-        else if (deltaY < -4) footer.classList.remove('hidden')
+        if (deltaY > 4) el.classList.add('hidden')
+        else if (deltaY < -4) el.classList.remove('hidden')
         lastTouchY = e.touches[0].clientY
       }
 
