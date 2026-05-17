@@ -1,10 +1,27 @@
 export function PreviewContainer({ children }): JSX.Element {
-  return <div className="rounded bg-white p-3 shadow-sm dark:bg-gray-900 dark:text-white">{children}</div>
+  return (
+    <div className="rounded-xl p-3 shadow-sm"
+      style={{
+        backgroundColor: 'rgba(255, 255, 255, 0.45)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+      }}
+    >
+      {children}
+    </div>
+  )
 }
 
 export function DownloadBtnContainer({ children }): JSX.Element {
   return (
-    <div className="sticky bottom-0 left-0 right-0 z-10 rounded border-t border-gray-900/10 bg-white bg-opacity-80 p-2 shadow-sm backdrop-blur-md dark:border-gray-500/30 dark:bg-gray-900">
+    <div
+      className="sticky bottom-0 left-0 right-0 z-10 rounded border-t border-gray-900/10 p-2 shadow-sm backdrop-blur-md dark:border-gray-500/30"
+      style={{
+        backgroundColor: 'rgba(255, 255, 255, 0.55)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+      }}
+    >
       {children}
     </div>
   )
