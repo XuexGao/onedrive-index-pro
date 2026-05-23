@@ -213,14 +213,13 @@ main,
   backdrop-filter: none !important;
 }
 
-/* 内容区进入动画：容器框不动，内部文件列表淡入上移 */
+/* 内容区进入动画：路由切换时整体淡入一次，内部加载状态切换不重复触发 */
 @keyframes od-fade-in {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* od-content 本身不动，只让里面的直接子元素动 */
-.od-content > * {
+.od-content {
   animation: od-fade-in 0.28s ease;
 }
 
