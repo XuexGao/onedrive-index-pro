@@ -213,14 +213,15 @@ main,
   backdrop-filter: none !important;
 }
 
-/* 内容区进入动画：每次切换文件夹时淡入上移 */
+/* 内容区进入动画：容器框不动，内部文件列表淡入上移 */
 @keyframes od-fade-in {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.od-content {
-  animation: od-fade-in 0.3s ease;
+/* od-content 本身不动，只让里面的直接子元素动 */
+.od-content > * {
+  animation: od-fade-in 0.28s ease;
 }
 
 /* 手机端：内容区域距离屏幕两侧留出间距 */
