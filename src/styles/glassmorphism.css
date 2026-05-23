@@ -212,3 +212,32 @@ main,
   background-color: transparent !important;
   backdrop-filter: none !important;
 }
+
+/* 内容区进入动画：每次切换文件夹时淡入上移 */
+@keyframes od-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.od-content {
+  animation: od-fade-in 0.3s ease;
+}
+
+/* 手机端：内容区域距离屏幕两侧留出间距 */
+@media (max-width: 640px) {
+  .mx-auto.w-full.max-w-5xl {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+/* 手机端导航栏：去掉模糊，改为全透明 */
+@media (max-width: 640px) {
+  .od-navbar {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+}
