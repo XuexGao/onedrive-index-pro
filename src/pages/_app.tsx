@@ -4,8 +4,7 @@ import '../styles/globals.css'
 import '../styles/markdown-github.css'
 import '../styles/glassmorphism.css'
 import { Analytics } from '@vercel/analytics/react'
-import { useEffect, useRef, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 const { library, config } = require('@fortawesome/fontawesome-svg-core')
 config.autoAddCss = false
@@ -180,46 +179,6 @@ function UmamiFooter() {
   )
 }
 
-// 路由切换淡出淡入动画
-// 用空依赖数组避免重复注册；3s 兜底防止 complete 事件未触发时永久透明
-function PageTransition({ children }: { children: React.ReactNode }) {
-  const router = useRouter()
-  const [visible, setVisible] = useState(true)
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  useEffect(() => {
-    const clear = () => { if (timerRef.current) clearTimeout(timerRef.current) }
-
-    const handleStart = () => {
-      clear()
-      setVisible(false)
-      // 兜底：3 秒后强制恢复，防止事件丢失
-      timerRef.current = setTimeout(() => setVisible(true), 3000)
-    }
-    const handleComplete = () => {
-      clear()
-      timerRef.current = setTimeout(() => setVisible(true), 50)
-    }
-
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleComplete)
-    router.events.on('routeChangeError', handleComplete)
-
-    return () => {
-      router.events.off('routeChangeStart', handleStart)
-      router.events.off('routeChangeComplete', handleComplete)
-      router.events.off('routeChangeError', handleComplete)
-      clear()
-    }
-  }, []) // 空依赖，router.events 是稳定引用，无需列入依赖
-
-  return (
-    <div style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.25s ease' }}>
-      {children}
-    </div>
-  )
-}
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -231,9 +190,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <UmamiFooter />
       <NextNProgress height={1} color="rgb(156, 163, 175, 0.9)" options={{ showSpinner: false }} />
       <Analytics />
-      <PageTransition>
-        <Component {...pageProps} />
-      </PageTransition>
+      <Component {...pageProps} />
     </>
   )
 }
