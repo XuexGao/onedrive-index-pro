@@ -5,6 +5,7 @@ import '../styles/markdown-github.css'
 import '../styles/glassmorphism.css'
 import { Analytics } from '@vercel/analytics/react'
 import { useEffect, useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 
 const { library, config } = require('@fortawesome/fontawesome-svg-core')
 config.autoAddCss = false
@@ -65,7 +66,6 @@ import * as Icons from '@fortawesome/free-brands-svg-icons'
 import type { AppProps } from 'next/app'
 import NextNProgress from 'nextjs-progressbar'
 import { appWithTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
 
 const iconList = Object.keys(Icons)
   .filter(k => k !== 'fab' && k !== 'prefix')
@@ -170,7 +170,7 @@ function UmamiFooter() {
 
     fetchStats()
     initScrollHide()
-  }, []) // 空依赖数组 —— 只在应用首次加载时执行一次
+  }, [])
 
   return (
     <div id="umami-footer">
@@ -180,32 +180,41 @@ function UmamiFooter() {
   )
 }
 
+// 路由切换淡出淡入动画
+// 用空依赖数组避免重复注册；3s 兜底防止 complete 事件未触发时永久透明
 function PageTransition({ children }: { children: React.ReactNode }) {
   const router = useRouter()
-  const [opacity, setOpacity] = useState(1)
+  const [visible, setVisible] = useState(true)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
+    const clear = () => { if (timerRef.current) clearTimeout(timerRef.current) }
+
     const handleStart = () => {
-      if (timerRef.current) clearTimeout(timerRef.current)
-      setOpacity(0)
+      clear()
+      setVisible(false)
+      // 兜底：3 秒后强制恢复，防止事件丢失
+      timerRef.current = setTimeout(() => setVisible(true), 3000)
     }
     const handleComplete = () => {
-      timerRef.current = setTimeout(() => setOpacity(1), 50)
+      clear()
+      timerRef.current = setTimeout(() => setVisible(true), 50)
     }
+
     router.events.on('routeChangeStart', handleStart)
     router.events.on('routeChangeComplete', handleComplete)
     router.events.on('routeChangeError', handleComplete)
+
     return () => {
       router.events.off('routeChangeStart', handleStart)
       router.events.off('routeChangeComplete', handleComplete)
       router.events.off('routeChangeError', handleComplete)
-      if (timerRef.current) clearTimeout(timerRef.current)
+      clear()
     }
-  }, [router])
+  }, []) // 空依赖，router.events 是稳定引用，无需列入依赖
 
   return (
-    <div style={{ opacity, transition: 'opacity 0.25s ease' }}>
+    <div style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.25s ease' }}>
       {children}
     </div>
   )
