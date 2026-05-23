@@ -213,10 +213,10 @@ main,
   backdrop-filter: none !important;
 }
 
-/* 内容区进入动画：路由切换时整体淡入一次，内部加载状态切换不重复触发 */
+/* 内容区进入动画：只用 opacity，避免 transform 打断子元素的 backdrop-filter */
 @keyframes od-fade-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .od-content {
