@@ -59,17 +59,11 @@ main,
 
 /* ---------- Navbar ---------- */
 .od-navbar {
-  background-color: var(--glass-bg-light) !important;
-  backdrop-filter: var(--glass-blur) !important;
-  -webkit-backdrop-filter: var(--glass-blur) !important;
-  border-bottom: 1px solid var(--glass-border-light) !important;
-}
-
-@media (prefers-color-scheme: dark) {
-  .od-navbar {
-    background-color: var(--glass-bg-dark) !important;
-    border-bottom-color: var(--glass-border-dark) !important;
-  }
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
 /* ---------- File listing container ---------- */
@@ -231,13 +225,3 @@ main,
   }
 }
 
-/* 手机端导航栏：去掉模糊，改为全透明 */
-@media (max-width: 640px) {
-  .od-navbar {
-    background-color: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    border-bottom: none !important;
-    box-shadow: none !important;
-  }
-}
