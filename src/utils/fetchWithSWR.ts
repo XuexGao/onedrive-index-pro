@@ -28,30 +28,21 @@ export async function fetcher([url, token]: [url: string, token?: string]): Prom
 export function useProtectedSWRInfinite(path: string = '') {
   const hashedToken = getStoredToken(path)
 
-  /**
-   * Next page infinite loading for useSWR
-   * @param pageIdx The index of this paging collection
-   * @param prevPageData Previous page information
-   * @param path Directory path
-   * @returns API to the next page
-   */
   function getNextKey(pageIndex: number, previousPageData: OdAPIResponse): (string | null)[] | null {
-    // Reached the end of the collection
     if (previousPageData && !previousPageData.folder) return null
-
-    // First page with no prevPageData
     if (pageIndex === 0) return [`/api/?path=${path}`, hashedToken]
-
-    // Add nextPage token to API endpoint
     return [`/api/?path=${path}&next=${previousPageData.next}`, hashedToken]
   }
 
-  // Disable auto-revalidate, these options are equivalent to useSWRImmutable
-  // https://swr.vercel.app/docs/revalidation#disable-automatic-revalidations
   const revalidationOptions = {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: true,
+    // 切换文件夹时保留上一个文件夹的数据，避免空白闪烁
+    keepPreviousData: true,
+    // 同一路径 60 秒内不重复请求
+    dedupingInterval: 60000,
   }
+
   return useSWRInfinite(getNextKey, fetcher, revalidationOptions)
 }
