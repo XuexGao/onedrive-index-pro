@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import siteConfig from '../../config/site.config'
@@ -9,6 +10,8 @@ import Breadcrumb from '../components/Breadcrumb'
 import SwitchLayout from '../components/SwitchLayout'
 
 export default function Home() {
+  const router = useRouter()
+
   return (
     <div className="od-page-wrapper flex min-h-screen flex-col items-center justify-center">
       <Head>
@@ -17,12 +20,15 @@ export default function Home() {
 
       <main className="od-main flex w-full flex-1 flex-col">
         <Navbar />
-        <div className="od-content mx-auto w-full max-w-5xl py-4 px-3 sm:px-4 sm:p-4">
+        <div className="mx-auto w-full max-w-5xl py-4 px-3 sm:px-4 sm:p-4">
           <nav className="mb-4 flex items-center justify-between px-1">
             <Breadcrumb />
             <SwitchLayout />
           </nav>
-          <FileListing />
+          {/* key 强制在每次路由变化时重新挂载，触发 CSS 动画 */}
+          <div key={router.asPath} className="od-content">
+            <FileListing />
+          </div>
         </div>
       </main>
 
