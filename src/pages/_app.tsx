@@ -4,7 +4,7 @@ import '../styles/globals.css'
 import '../styles/markdown-github.css'
 import '../styles/glassmorphism.css'
 import { Analytics } from '@vercel/analytics/react'
-import { useEffect } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const { library, config } = require('@fortawesome/fontawesome-svg-core')
 config.autoAddCss = false
@@ -65,6 +65,7 @@ import * as Icons from '@fortawesome/free-brands-svg-icons'
 import type { AppProps } from 'next/app'
 import NextNProgress from 'nextjs-progressbar'
 import { appWithTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 
 const iconList = Object.keys(Icons)
   .filter(k => k !== 'fab' && k !== 'prefix')
@@ -179,6 +180,37 @@ function UmamiFooter() {
   )
 }
 
+function PageTransition({ children }: { children: React.ReactNode }) {
+  const router = useRouter()
+  const [opacity, setOpacity] = useState(1)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(() => {
+    const handleStart = () => {
+      if (timerRef.current) clearTimeout(timerRef.current)
+      setOpacity(0)
+    }
+    const handleComplete = () => {
+      timerRef.current = setTimeout(() => setOpacity(1), 50)
+    }
+    router.events.on('routeChangeStart', handleStart)
+    router.events.on('routeChangeComplete', handleComplete)
+    router.events.on('routeChangeError', handleComplete)
+    return () => {
+      router.events.off('routeChangeStart', handleStart)
+      router.events.off('routeChangeComplete', handleComplete)
+      router.events.off('routeChangeError', handleComplete)
+      if (timerRef.current) clearTimeout(timerRef.current)
+    }
+  }, [router])
+
+  return (
+    <div style={{ opacity, transition: 'opacity 0.25s ease' }}>
+      {children}
+    </div>
+  )
+}
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -190,7 +222,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <UmamiFooter />
       <NextNProgress height={1} color="rgb(156, 163, 175, 0.9)" options={{ showSpinner: false }} />
       <Analytics />
-      <Component {...pageProps} />
+      <PageTransition>
+        <Component {...pageProps} />
+      </PageTransition>
     </>
   )
 }
