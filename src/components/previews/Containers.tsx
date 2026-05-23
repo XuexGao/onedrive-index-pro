@@ -1,6 +1,6 @@
 export function PreviewContainer({ children }): JSX.Element {
   return (
-    <div className="rounded-xl p-3 shadow-sm"
+    <div className="rounded-2xl p-3 shadow-sm"
       style={{
         backgroundColor: 'rgba(255, 255, 255, 0.45)',
         backdropFilter: 'blur(14px)',
