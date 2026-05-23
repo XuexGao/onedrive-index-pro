@@ -10,7 +10,7 @@ import Breadcrumb from '../components/Breadcrumb'
 import SwitchLayout from '../components/SwitchLayout'
 
 export default function Folders() {
-  const { query } = useRouter()
+  const { query, asPath } = useRouter()
   const title = (query.path && Array.isArray(query.path) ? query.path[query.path.length - 1] : '')
 
   return (
@@ -21,12 +21,15 @@ export default function Folders() {
 
       <main className="od-main flex w-full flex-1 flex-col">
         <Navbar />
-        <div className="od-content mx-auto w-full max-w-5xl py-4 px-3 sm:px-4 sm:p-4">
+        <div className="mx-auto w-full max-w-5xl py-4 px-3 sm:px-4 sm:p-4">
           <nav className="mb-4 flex items-center justify-between space-x-3 px-1">
             <Breadcrumb query={query} />
             <SwitchLayout />
           </nav>
-          <FileListing query={query} />
+          {/* key 强制在每次路由变化时重新挂载，触发 CSS 动画 */}
+          <div key={asPath} className="od-content">
+            <FileListing query={query} />
+          </div>
         </div>
       </main>
 
