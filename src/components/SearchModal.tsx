@@ -199,7 +199,7 @@ export default function SearchModal({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 bg-white/80 dark:bg-gray-800/80" />
+            <Dialog.Overlay className="fixed inset-0" style={{ backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)", backgroundColor: "rgba(255,255,255,0.2)" }} />
           </Transition.Child>
 
           <Transition.Child
@@ -211,10 +211,10 @@ export default function SearchModal({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="my-12 inline-block w-full max-w-3xl transform overflow-hidden rounded border border-gray-400/30 text-left shadow-xl transition-all">
+            <div className="my-12 inline-block w-full max-w-3xl transform overflow-hidden rounded border border-gray-400/30 text-left shadow-xl transition-all" style={{ backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", backgroundColor: "rgba(255,255,255,0.55)" }}>
               <Dialog.Title
                 as="h3"
-                className="flex items-center space-x-4 border-b border-gray-400/30 bg-gray-50 p-4 dark:bg-gray-800 dark:text-white"
+                className="flex items-center space-x-4 border-b border-gray-400/30 p-4 dark:text-white" style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
               >
                 <FontAwesomeIcon icon="search" className="h-4 w-4" />
                 <input
@@ -228,7 +228,7 @@ export default function SearchModal({
                 <div className="rounded-lg bg-gray-200 px-2 py-1 text-xs font-medium dark:bg-gray-700">ESC</div>
               </Dialog.Title>
               <div
-                className="max-h-[80vh] overflow-x-hidden overflow-y-scroll bg-white dark:bg-gray-900 dark:text-white"
+                className="max-h-[80vh] overflow-x-hidden overflow-y-scroll dark:text-white" style={{ backgroundColor: "rgba(255,255,255,0.05)" }}
                 onClick={closeSearchBox}
               >
                 {results.loading && (
