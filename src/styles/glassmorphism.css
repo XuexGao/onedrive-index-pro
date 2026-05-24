@@ -59,11 +59,17 @@ main,
 
 /* ---------- Navbar ---------- */
 .od-navbar {
-  background-color: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
+  background-color: var(--glass-bg-light) !important;
+  backdrop-filter: var(--glass-blur) !important;
+  -webkit-backdrop-filter: var(--glass-blur) !important;
+  border-bottom: 1px solid var(--glass-border-light) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .od-navbar {
+    background-color: var(--glass-bg-dark) !important;
+    border-bottom-color: var(--glass-border-dark) !important;
+  }
 }
 
 /* ---------- File listing container ---------- */
@@ -225,3 +231,39 @@ main,
   }
 }
 
+/* 手机端导航栏：去掉模糊，改为全透明 */
+@media (max-width: 640px) {
+  .od-navbar {
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* ---------- 自适应对比度 ---------- */
+/* 导航栏文字/图标：同时加白色光晕和深色阴影，在任何壁纸下都清晰可读 */
+.od-navbar a,
+.od-navbar button,
+.od-navbar span,
+.od-navbar svg {
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.85),
+    0 0 4px rgba(255, 255, 255, 0.85),
+    0 1px 6px rgba(0, 0, 0, 0.45);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3))
+          drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+}
+
+/* 面包屑导航 */
+nav a,
+nav span,
+nav button,
+nav svg {
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.85),
+    0 1px 5px rgba(0, 0, 0, 0.4);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.25))
+          drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+}
