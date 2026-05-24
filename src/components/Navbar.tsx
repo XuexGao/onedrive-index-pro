@@ -91,7 +91,8 @@ const Navbar = () => {
 
         <div className="flex flex-1 items-center space-x-4 text-gray-700 md:flex-initial">
           <button
-            className="flex flex-1 items-center justify-between rounded-lg bg-gray-100 px-2.5 py-1.5 hover:opacity-80 dark:bg-gray-800 dark:text-white md:w-48"
+            className="flex flex-1 items-center justify-between rounded-lg px-2.5 py-1.5 hover:opacity-80 dark:text-white md:w-48"
+            style={{ backgroundColor: 'rgba(255,255,255,0.35)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(255,255,255,0.45)' }}
             onClick={openSearchBox}
           >
             <div className="flex items-center space-x-2">
