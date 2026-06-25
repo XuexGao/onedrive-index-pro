@@ -10,7 +10,7 @@
 
 - 再就是本版本设定了当完成OAuth认证后，自动关闭OAuth认证通道，以防有心人通过OAuth认证的网址链接就轻易地获取到用户的配置信息。
 
-- 美化了整体的页面(未完工)，添加了Umami统计
+- 美化了整体的页面(未完工)，添加了Umami统计（通过环境变量配置，详见下方的环境变量说明）
 
 ## 在线预览
 
@@ -34,7 +34,7 @@
 
 3. **当您做好准备工作，就可以点击下面的按钮进行部署了：**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/clone?repository-url=https%3A%2F%2Fgithub.com%2FXuexGao%2Fonedrive-index-pro&env=NEXT_PUBLIC_SITE_TITLE,USER_PRINCIPAL_NAME,BASE_DIRECTORY,CLIENT_ID,CLIENT_SECRET)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/clone?repository-url=https%3A%2F%2Fgithub.com%2FXuexGao%2Fonedrive-index-pro&env=NEXT_PUBLIC_SITE_TITLE,USER_PRINCIPAL_NAME,BASE_DIRECTORY,CLIENT_ID,CLIENT_SECRET,NEXT_PUBLIC_UMAMI_BASE_URL,NEXT_PUBLIC_UMAMI_WEBSITE_ID,NEXT_PUBLIC_UMAMI_SHARE_ID)
 
 
 4. **初次部署成功后，部署的页面上去是404的，因为我们还需要连接到Redis数据库。**
@@ -62,6 +62,9 @@
 | `NEXT_PUBLIC_PROTECTED_ROUTES` | 需要密码访问的文件夹路径 | `config/site.config.js` | 格式：`/route1,/route2`， 多个路径使用`,`间隔 |
 | `NEXT_PUBLIC_EMAIL` | 显示在右上角的联系Email | `config/site.config.js` | `example@example.com` |
 | `KV_PREFIX` | 用于KV存储（键值对存储）的前缀 | `config/site.config.js` | Upstash只提供一个免费的`Redis`数据库，如果想要部署多个OneDrive-Index，就可为不同的Index设置不同的`KV_PREFIX`值，那么就不会有键值冲突了 |
+| `NEXT_PUBLIC_UMAMI_BASE_URL` | Umami 统计服务的地址 | - | 例如：`https://u.xiegao.top`（注意末尾不要加 `/`） |
+| `NEXT_PUBLIC_UMAMI_WEBSITE_ID` | Umami 网站 ID | - | 在 Umami 后台的「设置 → 网站」中可以找到 |
+| `NEXT_PUBLIC_UMAMI_SHARE_ID` | Umami 分享链接 ID | - | 在 Umami 后台创建分享链接后获得，用于在页面底部展示访问统计 |
 
 ## 说明文档
 

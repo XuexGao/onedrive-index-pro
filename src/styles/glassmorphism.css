@@ -183,6 +183,13 @@ main,
   pointer-events: none;
 }
 
+/* 入口动画：初始在屏幕下方，进入后弹出 */
+#umami-footer.umami-enter {
+  opacity: 0;
+  transform: translateX(-50%) translateY(80px);
+  pointer-events: none;
+}
+
 @media (prefers-color-scheme: dark) {
   #umami-footer {
     background-color: rgba(15, 15, 25, 0.55);

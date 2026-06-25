@@ -23,11 +23,13 @@ class MyDocument extends Document {
           ))}
 
           {/* Umami Analytics */}
-          <script
-            defer
-            src="https://u.xiegao.top/script.js"
-            data-website-id="657f778c-1788-48a4-afbd-19364c686800"
-          />
+          {process.env.NEXT_PUBLIC_UMAMI_BASE_URL && process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+            <script
+              defer
+              src={`${process.env.NEXT_PUBLIC_UMAMI_BASE_URL}/script.js`}
+              data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
+            />
+          )}
         </Head>
         <body>
           <Main />

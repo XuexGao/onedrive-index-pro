@@ -4,7 +4,7 @@ import '../styles/globals.css'
 import '../styles/markdown-github.css'
 import '../styles/glassmorphism.css'
 import { Analytics } from '@vercel/analytics/react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 const { library, config } = require('@fortawesome/fontawesome-svg-core')
 config.autoAddCss = false
@@ -85,10 +85,18 @@ library.add(
 
 // Umami 访问统计
 function UmamiFooter() {
+  const [entered, setEntered] = useState(false)
+
   useEffect(() => {
-    const shareId   = 'mBSRxuKO9HStUBPz'
-    const websiteId = '657f778c-1788-48a4-afbd-19364c686800'
-    const baseUrl   = 'https://u.xiegao.top'
+    const shareId   = process.env.NEXT_PUBLIC_UMAMI_SHARE_ID || ''
+    const websiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || ''
+    const baseUrl   = process.env.NEXT_PUBLIC_UMAMI_BASE_URL || ''
+
+    // 未配置 Umami 环境变量，不执行任何逻辑
+    if (!shareId || !websiteId || !baseUrl) return
+
+    // 入口动画：延迟一帧后从底部弹出
+    requestAnimationFrame(() => setEntered(true))
 
     function animateValue(el: HTMLElement, end: number) {
       let start = 0
@@ -171,8 +179,13 @@ function UmamiFooter() {
     initScrollHide()
   }, [])
 
+  // 没有配置 Umami 环境变量时不渲染底部统计框
+  if (!process.env.NEXT_PUBLIC_UMAMI_SHARE_ID || !process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || !process.env.NEXT_PUBLIC_UMAMI_BASE_URL) {
+    return null
+  }
+
   return (
-    <div id="umami-footer">
+    <div id="umami-footer" className={entered ? '' : 'umami-enter'}>
       <span>今日访问 <b id="uv-today">--</b> 次</span>
       <span>累计访问 <b id="uv-total">--</b> 次</span>
     </div>
