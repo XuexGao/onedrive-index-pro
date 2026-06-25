@@ -9,6 +9,12 @@ class MyDocument extends Document {
           <meta name="description" content="OneDrive Index" />
           <link rel="icon" href="/favicon.ico" />
 
+          {/* DNS 预解析 & 预连接，加速字体和 CDN 资源加载 */}
+          <link rel="dns-prefetch" href="//npm.elemecdn.com" />
+          <link rel="preconnect" href="https://npm.elemecdn.com" crossOrigin="" />
+          <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+          <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+
           {/* LXGW WenKai Font */}
           <link
             rel="stylesheet"

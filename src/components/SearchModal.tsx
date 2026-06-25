@@ -93,7 +93,7 @@ function SearchResultItemTemplate({
     <Link
       href={driveItemPath}
       passHref
-      className={`flex items-center space-x-4 border-b border-gray-400/30 px-4 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-850 ${
+      className={`flex items-center space-x-4 px-4 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-850 ${
         disabled ? 'pointer-events-none cursor-not-allowed' : 'cursor-pointer'
       }`}
     >
@@ -211,10 +211,10 @@ export default function SearchModal({
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <div className="my-12 inline-block w-full max-w-3xl transform overflow-hidden rounded-2xl border border-gray-400/30 text-left shadow-xl transition-all" style={{ backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", backgroundColor: "rgba(255,255,255,0.55)" }}>
+            <div className="my-12 inline-block w-full max-w-3xl transform overflow-hidden rounded-2xl text-left shadow-xl transition-all" style={{ backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", backgroundColor: "rgba(255,255,255,0.55)", border: "none" }}>
               <Dialog.Title
                 as="h3"
-                className="flex items-center space-x-4 border-b border-gray-400/30 p-4 dark:text-white" style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
+                className="flex items-center space-x-4 p-4 dark:text-white" style={{ backgroundColor: "rgba(255,255,255,0.1)", borderBottom: "none" }}
               >
                 <FontAwesomeIcon icon="search" className="h-4 w-4" />
                 <input

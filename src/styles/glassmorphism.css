@@ -71,7 +71,7 @@ main,
   background-color: rgba(255, 255, 255, 0.35) !important;
   backdrop-filter: var(--glass-blur) !important;
   -webkit-backdrop-filter: var(--glass-blur) !important;
-  border: 1px solid var(--glass-border-light) !important;
+  border: none !important;
   border-radius: 1rem !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08) !important;
 }
@@ -79,7 +79,7 @@ main,
 @media (prefers-color-scheme: dark) {
   .od-files-container {
     background-color: rgba(10, 10, 20, 0.40) !important;
-    border-color: var(--glass-border-dark) !important;
+    border: none !important;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35) !important;
   }
 }
@@ -167,7 +167,7 @@ main,
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   background-color: rgba(255, 255, 255, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: none;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   font-size: 13px;
   color: #444;
@@ -193,7 +193,6 @@ main,
 @media (prefers-color-scheme: dark) {
   #umami-footer {
     background-color: rgba(15, 15, 25, 0.55);
-    border-color: rgba(255, 255, 255, 0.10);
     color: #ccc;
   }
 }
