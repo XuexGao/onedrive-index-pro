@@ -25,9 +25,7 @@ export default function Folders() {
           <nav
             className="relative z-10 mb-3 flex items-center justify-between rounded-2xl px-4 py-1.5"
             style={{
-              backgroundColor: 'rgba(255,255,255,0.35)',
-              backdropFilter: 'blur(14px)',
-              WebkitBackdropFilter: 'blur(14px)',
+              backgroundColor: 'rgba(255,255,255,0.45)',
               border: 'none',
             }}
           >
