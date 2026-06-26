@@ -60,7 +60,15 @@ const SwitchLang = () => {
           leaveFrom="transform scale-100 opacity-100"
           leaveTo="transform scale-95 opacity-0"
         >
-          <Menu.Items className="absolute top-0 right-0 z-20 mt-8 w-28 divide-y divide-gray-900 overflow-auto rounded border border-gray-900/10 bg-white py-1 shadow-lg focus:outline-none dark:border-gray-500/30 dark:bg-gray-900 dark:text-white">
+          <Menu.Items
+            className="absolute top-0 right-0 z-20 mt-8 w-28 divide-y divide-gray-900/10 overflow-auto rounded-2xl py-1 shadow-lg focus:outline-none dark:text-white"
+            style={{
+              backgroundColor: 'rgba(255,255,255,0.55)',
+              backdropFilter: 'blur(14px)',
+              WebkitBackdropFilter: 'blur(14px)',
+              border: 'none',
+            }}
+          >
             {locales!.map(locale => (
               <Menu.Item key={locale}>
                 <CustomLink
