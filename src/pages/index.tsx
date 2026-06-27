@@ -22,11 +22,7 @@ export default function Home() {
         <Navbar />
         <div className="mx-auto w-full max-w-5xl py-4 px-3 sm:px-4 sm:p-4">
           <nav
-            className="relative z-10 mb-3 flex items-center justify-between rounded-2xl px-4 py-1.5"
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.45)',
-              border: 'none',
-            }}
+            className="od-breadcrumb-bar relative z-10 mb-3 flex items-center justify-between rounded-2xl px-4 py-1.5"
           >
             <Breadcrumb />
             <SwitchLayout />
