@@ -27,8 +27,7 @@ export default function Home() {
             <Breadcrumb />
             <SwitchLayout />
           </nav>
-          {/* key 强制在每次路由变化时重新挂载，触发 CSS 动画 */}
-          <div key={router.asPath} className="od-content">
+          <div key={router.asPath}>
             <FileListing />
           </div>
         </div>

@@ -28,8 +28,7 @@ export default function Folders() {
             <Breadcrumb query={query} />
             <SwitchLayout />
           </nav>
-          {/* key 强制在每次路由变化时重新挂载，触发 CSS 动画 */}
-          <div key={asPath} className="od-content">
+          <div key={asPath}>
             <FileListing query={query} />
           </div>
         </div>

@@ -233,16 +233,6 @@ main,
   backdrop-filter: none !important;
 }
 
-/* 内容区进入动画：只用 opacity，避免 transform 打断子元素的 backdrop-filter */
-@keyframes od-fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.od-content {
-  animation: od-fade-in 0.28s ease;
-}
-
 /* 手机端：内容区域距离屏幕两侧留出间距 */
 @media (max-width: 640px) {
   .mx-auto.w-full.max-w-5xl {
