@@ -40,7 +40,9 @@ const FolderListLayout = ({
   toggleTotalSelected,
   totalGenerating,
   handleSelectedDownload,
+  folderGenerating,
   handleSelectedPermalink,
+  handleFolderDownload,
   toast,
 }) => {
   const clipboard = useClipboard()
@@ -115,7 +117,7 @@ const FolderListLayout = ({
           </Link>
 
           {c.folder ? (
-            <div className="hidden items-center justify-end p-1.5 text-gray-700 dark:text-gray-400 md:flex">
+            <div className="hidden p-1.5 text-gray-700 dark:text-gray-400 md:flex">
               <span
                 title={t('Copy folder permalink')}
                 className="cursor-pointer rounded px-1.5 py-1 hover:bg-gray-300 dark:hover:bg-gray-600"
@@ -126,9 +128,23 @@ const FolderListLayout = ({
               >
                 <FontAwesomeIcon icon={['far', 'copy']} />
               </span>
+              {folderGenerating[c.id] ? (
+                <Downloading title={t('Downloading folder, refresh page to cancel')} style="px-1.5 py-1" />
+              ) : (
+                <span
+                  title={t('Download folder')}
+                  className="cursor-pointer rounded px-1.5 py-1 hover:bg-gray-300 dark:hover:bg-gray-600"
+                  onClick={() => {
+                    const p = `${path === '/' ? '' : path}/${encodeURIComponent(c.name)}`
+                    handleFolderDownload(p, c.id, c.name)()
+                  }}
+                >
+                  <FontAwesomeIcon icon={['far', 'arrow-alt-circle-down']} />
+                </span>
+              )}
             </div>
           ) : (
-            <div className="hidden items-center justify-end p-1.5 text-gray-700 dark:text-gray-400 md:flex">
+            <div className="hidden p-1.5 text-gray-700 dark:text-gray-400 md:flex">
               <span
                 title={t('Copy raw file permalink')}
                 className="cursor-pointer rounded px-1.5 py-1 hover:bg-gray-300 dark:hover:bg-gray-600"
@@ -141,6 +157,13 @@ const FolderListLayout = ({
               >
                 <FontAwesomeIcon icon={['far', 'copy']} />
               </span>
+              <a
+                title={t('Download file')}
+                className="cursor-pointer rounded px-1.5 py-1 hover:bg-gray-300 dark:hover:bg-gray-600"
+                href={`/api/raw/?path=${getItemPath(c.name)}${hashedToken ? `&odpt=${hashedToken}` : ''}`}
+              >
+                <FontAwesomeIcon icon={['far', 'arrow-alt-circle-down']} />
+              </a>
             </div>
           )}
           <div className="hidden p-1.5 text-gray-700 dark:text-gray-400 md:flex">
