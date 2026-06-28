@@ -20,8 +20,8 @@ const SwitchLayout = () => {
   return (
     <div className="relative w-24 flex-shrink-0 text-sm text-gray-600 dark:text-gray-300 md:w-28">
       <Listbox value={preferredLayout} onChange={setPreferredLayout}>
-        <Listbox.Button className="relative w-full cursor-pointer rounded pl-4">
-          <span className="pointer-events-none flex items-center">
+        <Listbox.Button className="relative w-full cursor-pointer rounded pr-4 text-right">
+          <span className="pointer-events-none flex items-center justify-end">
             <FontAwesomeIcon className="mr-2 h-3 w-3" icon={preferredLayout.icon} />
             <span>
               {
@@ -30,9 +30,6 @@ const SwitchLayout = () => {
                 t(preferredLayout.name)
               }
             </span>
-          </span>
-          <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-            <FontAwesomeIcon className="h-3 w-3" icon="chevron-down" />
           </span>
         </Listbox.Button>
 
